@@ -24,9 +24,12 @@ public class ProduitServiceImpl implements ProduitService {
     }
 
     @Override
-    public ProduitDTO creer(Produit produit) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'creer'");
+    public ProduitDTO creer(ProduitDTO produitDTO) {
+        Produit produit = ProduitConvert.getInstance().convertDtoToEntity(produitDTO);
+
+        Produit savedProduit = produitRepository.save(produit);
+
+        return ProduitConvert.getInstance().convertEntityToDto(savedProduit);
     }
 
     @Override

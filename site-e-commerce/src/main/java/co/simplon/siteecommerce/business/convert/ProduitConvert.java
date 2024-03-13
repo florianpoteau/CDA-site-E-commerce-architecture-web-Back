@@ -35,6 +35,17 @@ public class ProduitConvert {
 
     // TODO - Convert DTO en Entity
 
+    public Produit convertDtoToEntity(final ProduitDTO produit1) {
+        final Produit entity = new Produit();
+        entity.setId(produit1.getId());
+        entity.setDescription(produit1.getDescription());
+        entity.setTitre(produit1.getTitre());
+        entity.setPrix(produit1.getPrix());
+        entity.setImage(produit1.getImage());
+
+        return entity;
+    }
+
     // TODO - Convert List Entity en List DTO
 
     public List<ProduitDTO> convertListEntityToListDto(final List<Produit> listEntities) {

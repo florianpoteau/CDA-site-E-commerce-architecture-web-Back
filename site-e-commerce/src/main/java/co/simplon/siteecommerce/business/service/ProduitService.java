@@ -7,7 +7,7 @@ import co.simplon.siteecommerce.persistance.entity.Produit;
 
 public interface ProduitService {
 
-    ProduitDTO creer(Produit produit);
+    ProduitDTO creer(ProduitDTO produitDTO);
 
     List<ProduitDTO> lire();
 
