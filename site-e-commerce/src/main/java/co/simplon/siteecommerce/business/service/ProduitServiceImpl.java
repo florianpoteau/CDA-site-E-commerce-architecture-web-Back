@@ -3,6 +3,8 @@ package co.simplon.siteecommerce.business.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.swing.text.html.Option;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import co.simplon.siteecommerce.business.convert.ProduitConvert;
@@ -48,21 +50,22 @@ public class ProduitServiceImpl implements ProduitService {
             existingProduit.setTitre(produitDTO.getTitre());
             existingProduit.setPrix(produitDTO.getPrix());
 
-            // Sauvegarder les modifications
             Produit updatedProduit = produitRepository.save(existingProduit);
 
-            // Convertir et retourner le produit mis à jour en DTO
             return ProduitConvert.getInstance().convertEntityToDto(updatedProduit);
         } else {
-            // Si le produit avec l'ID spécifié n'existe pas, lancer une exception
             throw new EntityNotFoundException("Le produit n'existe pas " + id);
         }
     }
 
     @Override
-    public String supprimer(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'supprimer'");
+    public void supprimer(long id) {
+        Optional<Produit> optionalProduit = produitRepository.findById(id);
+        if (optionalProduit.isPresent()) {
+            produitRepository.deleteById(id);
+        } else {
+            throw new EntityNotFoundException("Le produit n'existe pas " + id);
+        }
     }
 
     public ProduitDTO lireParId(long id) {

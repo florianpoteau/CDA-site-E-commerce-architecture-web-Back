@@ -14,5 +14,5 @@ public interface ProduitService {
 
     ProduitDTO modifier(long id, ProduitDTO produitDTO);
 
-    String supprimer(int id);
+    void supprimer(long id);
 }

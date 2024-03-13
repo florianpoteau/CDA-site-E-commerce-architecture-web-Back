@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,6 +44,11 @@ public class ProduitController {
     @PutMapping("/produit/{id}")
     public ProduitDTO putProduit(@PathVariable long id, @RequestBody ProduitDTO produitDTO) {
         return produitService.modifier(id, produitDTO);
+    }
+
+    @DeleteMapping("/produit/{id}")
+    public void deleteProduit(@PathVariable long id) {
+        produitService.supprimer(id);
     }
 
 }
