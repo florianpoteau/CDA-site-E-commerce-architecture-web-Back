@@ -8,7 +8,9 @@ import co.simplon.siteecommerce.business.convert.ProduitConvert;
 import co.simplon.siteecommerce.business.dto.ProduitDTO;
 import co.simplon.siteecommerce.persistance.entity.Produit;
 import co.simplon.siteecommerce.persistance.repository.ProduitRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProduitServiceImpl implements ProduitService {
 
     private ProduitRepository produitRepository;
