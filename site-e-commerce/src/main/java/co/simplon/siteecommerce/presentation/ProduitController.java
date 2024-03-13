@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.simplon.siteecommerce.business.dto.ProduitDTO;
@@ -22,6 +23,11 @@ public class ProduitController {
     @GetMapping("/produit")
     public List<ProduitDTO> listProduits() {
         return produitService.lire();
+    }
+
+    @GetMapping("/produit/{id}")
+    public ProduitDTO getProductById(@PathVariable long id) {
+        return produitService.lireParId(id);
     }
 
 }

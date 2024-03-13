@@ -11,6 +11,8 @@ public interface ProduitService {
 
     List<ProduitDTO> lire();
 
+    ProduitDTO lireParId(long id);
+
     ProduitDTO modifier(int id, ProduitDTO produitDTO);
 
     String supprimer(int id);
