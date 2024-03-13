@@ -3,7 +3,6 @@ package co.simplon.siteecommerce.business.service;
 import java.util.List;
 
 import co.simplon.siteecommerce.business.dto.ProduitDTO;
-import co.simplon.siteecommerce.persistance.entity.Produit;
 
 public interface ProduitService {
 
@@ -13,7 +12,7 @@ public interface ProduitService {
 
     ProduitDTO lireParId(long id);
 
-    ProduitDTO modifier(int id, ProduitDTO produitDTO);
+    ProduitDTO modifier(long id, ProduitDTO produitDTO);
 
     String supprimer(int id);
 }

@@ -58,4 +58,12 @@ public class ProduitConvert {
 
     // TODO - Convert List DTO en List Entity
 
+    public List<Produit> convertListDtoToListEntity(final List<ProduitDTO> listEntities) {
+        final List<Produit> listeDO = new ArrayList<>();
+        for (final ProduitDTO entity : listEntities) {
+            listeDO.add(convertDtoToEntity(entity));
+        }
+        return listeDO;
+    }
+
 }

@@ -39,9 +39,24 @@ public class ProduitServiceImpl implements ProduitService {
     }
 
     @Override
-    public ProduitDTO modifier(int id, ProduitDTO produitDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'modifier'");
+    public ProduitDTO modifier(long id, ProduitDTO produitDTO) {
+        Optional<Produit> optionalProduit = produitRepository.findById(id);
+        if (optionalProduit.isPresent()) {
+            Produit existingProduit = optionalProduit.get();
+            existingProduit.setDescription(produitDTO.getDescription());
+            existingProduit.setImage(produitDTO.getImage());
+            existingProduit.setTitre(produitDTO.getTitre());
+            existingProduit.setPrix(produitDTO.getPrix());
+
+            // Sauvegarder les modifications
+            Produit updatedProduit = produitRepository.save(existingProduit);
+
+            // Convertir et retourner le produit mis à jour en DTO
+            return ProduitConvert.getInstance().convertEntityToDto(updatedProduit);
+        } else {
+            // Si le produit avec l'ID spécifié n'existe pas, lancer une exception
+            throw new EntityNotFoundException("Le produit n'existe pas " + id);
+        }
     }
 
     @Override
