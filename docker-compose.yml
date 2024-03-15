@@ -13,7 +13,7 @@ services:
       - "9254:5432"
     volumes:
       - pg_data:/var/lib/postgresql/data
-      # - ./script.sql: docker-entrypoint-initdb.d/script.sql
+      - ./:/docker-entrypoint-initdb.d
 
   pg_admin:
     container_name: pgadmin_container
