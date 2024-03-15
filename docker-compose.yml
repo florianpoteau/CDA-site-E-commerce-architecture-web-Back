@@ -2,41 +2,43 @@ version: "3.8"
 services:
   db:
     container_name: postgres_container
-    image: postgres
+    image: postgres:14.1-alpine
     restart: always
 
     environment:
-      POSTGRES_PASSWORD: root
-      POSTGRES_USER: root
-      POSTGRES_DB: ecommerce
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - POSTGRES_DB=db
     ports:
-      - "5432:5432"
+      - "9254:5432"
     volumes:
       - pg_data:/var/lib/postgresql/data
       # - ./script.sql: docker-entrypoint-initdb.d/script.sql
 
   pg_admin:
+    container_name: pgadmin_container
     image: dpage/pgadmin4:6
+    restart: always
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@email.com
-      PGADMIN_DEFAULT_PASSWORD: admin
-      PGADMIN_LISTEN_PORT: 5050
+      - PGADMIN_DEFAULT_EMAIL=admin@email.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+      - PGADMIN_LISTEN_PORT=5050
     ports:
       - "5050:5050"
 
-  myapp:
-    image: openjdk:17-jdk
-    volumes:
-      - "./path/to/your/app.jar:/app/app.jar"
-    ports:
-      - "8080:8080"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/Site-E-commerce-architecture-web
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
-    command: java -jar /app/app.jar
-    depends_on:
-      - db
+  # myapp:
+  #   image: openjdk:17-jdk
+  #   volumes:
+  #     - "./path/to/your/app.jar:/app/app.jar"
+  #   ports:
+  #     - "8080:8080"
+  #   environment:
+  #     SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/Site-E-commerce-architecture-web
+  #     SPRING_DATASOURCE_USERNAME: root
+  #     SPRING_DATASOURCE_PASSWORD: root
+  #   command: java -jar /app/app.jar
+  #   depends_on:
+  #     - db
 
 volumes:
   pg_data:
