@@ -40,6 +40,5 @@ services:
   #   depends_on:
   #     - db
 
->>>>>>> c6de62f (add:modifications)
 volumes:
   pg_data:
