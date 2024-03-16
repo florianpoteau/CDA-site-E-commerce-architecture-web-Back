@@ -38,6 +38,7 @@ public class ProduitController {
         return produitService.lireParId(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/produit")
     public ProduitDTO postProduit(@RequestBody ProduitDTO produitDTO) {
         return produitService.creer(produitDTO);

@@ -5,26 +5,28 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Produit")
+@SequenceGenerator(name = "produit_seq", sequenceName = "produit_seq", allocationSize = 1)
 public class Produit {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "produit_seq")
 	private int id;
 
 	@Column(name = "titre")
 	private String titre;
 
-	@Column(name = "description")
+	@Column(name = "description", length = 1500)
 	private String description;
 
 	@Column(name = "prix")
 	private float prix;
 
-	@Column(name = "image")
+	@Column(name = "image", length = 500)
 	private String image;
 
 	/**
