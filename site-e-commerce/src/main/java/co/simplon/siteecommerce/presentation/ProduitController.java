@@ -44,11 +44,13 @@ public class ProduitController {
         return produitService.creer(produitDTO);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/produit/{id}")
     public ProduitDTO putProduit(@PathVariable long id, @RequestBody ProduitDTO produitDTO) {
         return produitService.modifier(id, produitDTO);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping("/produit/{id}")
     public void deleteProduit(@PathVariable long id) {
         produitService.supprimer(id);
