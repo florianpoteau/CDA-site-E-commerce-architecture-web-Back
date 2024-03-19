@@ -28,7 +28,8 @@ cd site-e-commerce
 ```
 
 Puis lancer le serveur Spring.
-Pour avoir l'interface utilisateur: vous devrez cloner ce repository: [CDA-site-E-commerce-architecture-web-Front](https://github.com/florianpoteau/CDA-site-E-commerce-architecture-web-Front)
+<br>
+Pour avoir l'interface utilisateur, vous devrez cloner ce repository: [CDA-site-E-commerce-architecture-web-Front](https://github.com/florianpoteau/CDA-site-E-commerce-architecture-web-Front)
 
 ## Collaborateurs
 
